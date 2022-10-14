@@ -83,6 +83,14 @@ describe('paginationResolver(data, args, opts)', function() {
         assert.typeOf(res, 'array')
         assert.lengthOf(res, 2)
       })
+      it("should return all when rowsPerPage is 0", () => {
+        let data = [{a: 1}, {b: 2}, {c: 3}];
+        let args = {rowsPerPage: 0};
+        let res = paginationResolver(data, args);
+        // expect(paginationResolver(data, args)).to.throw(Error)
+        assert.typeOf(res, "array");
+        assert.equal(res.length, 3);
+      });
       it('should return all when rowsPerPage is -1', () => {
         let data = [{a:1},{b:2},{c:3}]
         let args = { rowsPerPage: -1 }
@@ -103,11 +111,6 @@ describe('paginationResolver(data, args, opts)', function() {
         let res = paginationResolver(data, args)
         assert.typeOf(res, 'array')
         assert.equal(res.length, 3);
-      })
-      it('should throw error when rowsPerPage is 0', () => {
-        let data = [{a:1},{b:2},{c:3}]
-        let args = { rowsPerPage: 0 }
-        expect(paginationResolver(data, args)).to.throw(Error)
       })
     })
   })

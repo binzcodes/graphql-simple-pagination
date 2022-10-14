@@ -37,15 +37,14 @@ module.exports.paginationResolver = (data, args, { indexOffset: indexOffset = 0 
     descending: descending = false
   } = args || {}
 
-  if (rowsPerPage === -1) {
-    rowsPerPage = data.length
-    page = 0
+  if (rowsPerPage < 1) {
+    rowsPerPage = data.length;
+    page = 0;
   }
-  if (rowsPerPage < 1) throw new Error('pageSize cannot be less than one')
 
-  let pageOffet = Math.max(0, page + indexOffset)
+  let pageOffset = Math.max(0, page + indexOffset)
   let sortOrder = descending ? 'desc' : 'asc'
   let sorted = _.orderBy(data, [sortBy], [sortOrder])
   let chunked = _.chunk(sorted, parseInt(rowsPerPage))
-  return chunked[parseInt(pageOffet)]
+  return chunked[parseInt(pageOffset)]
 }
