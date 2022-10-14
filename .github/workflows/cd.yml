@@ -1,9 +1,11 @@
 # Publishes if the version number in `package.json` differs from the latest on NPM
 # https://github.com/marketplace/actions/npm-publish
 
-name: npm publish
+name: Node.js package CD
 
-on: push
+on:
+  push:
+    branches: [ "master" ]
 
 jobs:
   publish:
