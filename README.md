@@ -1,3 +1,7 @@
+# GraphQL Simple Pagination
+
+[![Gitpod ready-to-code](https://img.shields.io/badge/Gitpod-ready--to--code-908a85?logo=gitpod)](https://gitpod.io/#https://github.com/binzcodes/pulumi-minimal-dynamodb-api)
+
 A simple pagination helper for GraphQL.
 
 `npm install --save graphql-simple-pagination`
@@ -42,3 +46,8 @@ const opts = {
 let result = paginationResolver(data, args, opts)
 console.log(result)
 ```
+# contributing
+
+Planned port to Typescript, contributions welcome
+
+[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/binzcodes/pulumi-minimal-dynamodb-api)
