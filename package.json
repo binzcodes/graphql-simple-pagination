@@ -20,5 +20,16 @@
     "babel-register": "^6.26.0",
     "chai": "^4.1.2",
     "mocha": "^10.0.0"
-  }
+  },
+  "directories": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/binzcodes/graphql-simple-pagination.git"
+  },
+  "bugs": {
+    "url": "https://github.com/binzcodes/graphql-simple-pagination/issues"
+  },
+  "homepage": "https://github.com/binzcodes/graphql-simple-pagination#readme"
 }
