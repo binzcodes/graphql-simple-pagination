@@ -107,7 +107,7 @@ describe('paginationResolver(data, args, opts)', function() {
       it('should throw error when rowsPerPage is 0', () => {
         let data = [{a:1},{b:2},{c:3}]
         let args = { rowsPerPage: 0 }
-        expect(paginationResolver(data, args)).to.throw(Error)
+        expect(() => paginationResolver(data, args)).to.throw(Error)
       })
     })
   })
