@@ -13,7 +13,7 @@
   "author": "Ryan Binns (hi@rbi.nz)",
   "license": "ISC",
   "dependencies": {
-    "graphql": "^0.13.2",
+    "graphql": "^16.6.0",
     "lodash": "^4.17.10"
   },
   "devDependencies": {
