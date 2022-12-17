@@ -10,7 +10,7 @@ A simple pagination helper for GraphQL.
 to implement super-simple application-layer paging.
 
 #### Usage
-```
+```javascript
 const { paginationInputType, paginationResolver } = require('graphql-simple-pagination')
 
 const User = new GraphQLObjectType({
@@ -29,8 +29,8 @@ const User = new GraphQLObjectType({
 ```
 
 #### API
-```
-const data = [{...},...]
+```javascript
+const data = [{...}, ...]
 
 const args = {
   rowsPerPage: 10, // number of items per page
