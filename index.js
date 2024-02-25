@@ -1,41 +1,45 @@
-const {
+import {
   GraphQLInputObjectType,
   GraphQLBoolean,
   GraphQLString,
-  GraphQLInt
-} = require('graphql')
-const _ = require('lodash')
+  GraphQLInt,
+} from "graphql";
+import _ from "lodash";
 
-module.exports.paginationInputType = new GraphQLInputObjectType({
-  name: 'PaginationInput',
-  description: 'Input definition for pagination',
+export const paginationInputType = new GraphQLInputObjectType({
+  name: "PaginationInput",
+  description: "Input definition for pagination",
   fields: {
     page: {
-      description: 'Page number',
-      type: GraphQLInt
+      description: "Page number",
+      type: GraphQLInt,
     },
     rowsPerPage: {
-      description: 'Maximum number of rows to return for each page.',
-      type: GraphQLInt
+      description: "Maximum number of rows to return for each page.",
+      type: GraphQLInt,
     },
     sortBy: {
-      description: 'Object key to sort by.',
-      type: GraphQLString
+      description: "Object key to sort by.",
+      type: GraphQLString,
     },
     descending: {
-      description: 'Set true to change sort order to descending',
-      type: GraphQLBoolean
-    }
-  }
-})
+      description: "Set true to change sort order to descending",
+      type: GraphQLBoolean,
+    },
+  },
+});
 
-module.exports.paginationResolver = (data, args, { indexOffset: indexOffset = 0 } = {}) => {
+export function paginationResolver(
+  data,
+  args,
+  {indexOffset: indexOffset = 0} = {}
+) {
   let {
     page: page = 0,
     rowsPerPage: rowsPerPage = 10,
     sortBy: sortBy = null,
-    descending: descending = false
-  } = args || {}
+    descending: descending = false,
+  } = args || {};
 
   if (rowsPerPage === 0) throw new Error("pageSize cannot be less than one");
 
@@ -44,9 +48,9 @@ module.exports.paginationResolver = (data, args, { indexOffset: indexOffset = 0 
     page = 0;
   }
 
-  let pageOffet = Math.max(0, page + indexOffset)
-  let sortOrder = descending ? 'desc' : 'asc'
-  let sorted = _.orderBy(data, [sortBy], [sortOrder])
-  let chunked = _.chunk(sorted, parseInt(rowsPerPage))
-  return chunked[parseInt(pageOffet)]
+  let pageOffet = Math.max(0, page + indexOffset);
+  let sortOrder = descending ? "desc" : "asc";
+  let sorted = _.orderBy(data, [sortBy], [sortOrder]);
+  let chunked = _.chunk(sorted, parseInt(rowsPerPage));
+  return chunked[parseInt(pageOffet)];
 }

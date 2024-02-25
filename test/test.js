@@ -1,7 +1,5 @@
-const { paginationResolver } = require('../index')
-const assert = require('chai').assert
-const should = require('chai').should()
-const expect = require('chai').expect
+import { paginationResolver } from '../index.js';
+import { assert, should, expect } from 'chai';
 
 describe('paginationResolver(data, args, opts)', function() {
   describe('data', () => {
@@ -60,18 +58,18 @@ describe('paginationResolver(data, args, opts)', function() {
         let data = [{a:3},{a:2},{a:1}]
         let args = { sortBy: 'a' }
         let res = paginationResolver(data, args)
-        res.should.have.lengthOf(3)
-        res[0].should.have.property('a', 1)
-        res[2].should.have.property('a', 3)
+        assert.equal(res.length, 3);
+        assert.propertyVal(res[0], 'a', 1);
+        assert.propertyVal(res[2], 'a', 3);
         assert.typeOf(res, 'array')
       })
       it('should reverse the array sort when sortBy provided and descending is true', () => {
         let data = [{a:1},{a:2},{a:3}]
         let args = { sortBy: 'a', descending: true }
         let res = paginationResolver(data, args)
-        res.should.have.lengthOf(3)
-        res[0].should.have.property('a', 3)
-        res[2].should.have.property('a', 1)
+        assert.equal(res.length, 3);
+        assert.propertyVal(res[0], "a", 3);
+        assert.propertyVal(res[2], "a", 1);
         assert.typeOf(res, 'array')
       })
     })
